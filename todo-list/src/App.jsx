@@ -16,7 +16,7 @@ function App() {
       </form>
       <h1>My todays list</h1>
       <ul>
-        <li>torororo my to do that m not doing</li>
+        <li className='h-10'>torororo my to do that m not doing</li>
         <li>torororo my to do that m not doing</li>
         <li>torororo my to do that m not doing</li>
         <li>torororo my to do that m not doing</li>
