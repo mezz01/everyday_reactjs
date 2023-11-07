@@ -17,6 +17,10 @@ function App() {
       <h1>My todays list</h1>
       <ul>
         <li>torororo my to do that m not doing</li>
+        <li>torororo my to do that m not doing</li>
+        <li>torororo my to do that m not doing</li>
+        <li>torororo my to do that m not doing</li>
+        <li>torororo my to do that m not doing</li>
       </ul>
     </>
   )
