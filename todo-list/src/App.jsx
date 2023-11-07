@@ -4,30 +4,20 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>My To Do List</h1>
+      <form className='new-todo-form'>
+        <div className='row-todo'>
+          <label htmlFor='item'>Add the thing (we know you won't do)</label>
+          <input type='text' id='item'/>
+        </div>
+        <button className='btn-add'>Add to list</button>
+      </form>
+      <h1>My todays list</h1>
+      <ul>
+        <li>torororo my to do that m not doing</li>
+      </ul>
     </>
   )
 }
