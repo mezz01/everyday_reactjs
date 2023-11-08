@@ -4,7 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  // setting the newTodo variable with useState
   const [newTodo, setNewTodo] = useState("")
+
+  // setting the todo varibale for the actual <ul>li<ul>
   const [todo, setTodo] = useState([])
 
   function handleTodo(e) {
@@ -17,8 +20,20 @@ function App() {
         {id:crypto.randomUUID(), title: newTodo, completed: false},
       ]
     })
-
+  // cleaning the input in form
    setNewTodo("")
+  }
+
+  function toggleTodo(e) {
+      setTodo(currentTodo => {
+        return currentTodo.map(todo => {
+          if (todo.id === id)
+          {
+            return{...todo, completed}
+          }
+          return todo
+        })
+      })
   }
   return (
     <>
@@ -37,18 +52,20 @@ function App() {
       </form>
       <h1>My todays list</h1>
       <ul>
-        <li>
-          <label>
-            <input type='checkbox' />
-            Todo 1
-          </label>
-        </li>
-        <li>
-          <label>
-            <input type='checkbox' />
-            Todo 2
-          </label>
-        </li>
+        {todo.map(todos => {
+          return(
+          <li>
+            <label>
+              <input type='checkbox' checked={todos.completed} 
+                onChange={e => toggleTodo(todos.id, e.target.checked)}
+              />
+              Todo 1
+            </label>
+            <button className='rounded-lg'>Delete</button>
+          </li>
+          )
+        })}
+
       </ul>
     </>
   )
