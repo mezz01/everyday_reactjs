@@ -24,7 +24,7 @@ function App() {
    setNewTodo("")
   }
 
-  function toggleTodo(e) {
+  function toggleTodo(id, completed) {
       setTodo(currentTodo => {
         return currentTodo.map(todo => {
           if (todo.id === id)
@@ -34,6 +34,12 @@ function App() {
           return todo
         })
       })
+  }
+
+  function deleteTodo(id){
+    setTodo(currentTodo => {
+      return currentTodo.filter(todo => todo.id !== id)
+    })
   }
   return (
     <>
@@ -52,6 +58,7 @@ function App() {
       </form>
       <h1>My todays list</h1>
       <ul>
+        {todo.length === 0 && "No to does yet"}
         {todo.map(todos => {
           return(
           <li>
@@ -59,9 +66,9 @@ function App() {
               <input type='checkbox' checked={todos.completed} 
                 onChange={e => toggleTodo(todos.id, e.target.checked)}
               />
-              Todo 1
+              {todos.title}
             </label>
-            <button className='rounded-lg'>Delete</button>
+            <button onClick={() => deleteTodo(todos.id)} className='rounded-lg'>Delete</button>
           </li>
           )
         })}
