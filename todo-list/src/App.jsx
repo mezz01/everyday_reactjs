@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,8 +8,18 @@ function App() {
   const [newTodo, setNewTodo] = useState("")
 
   // setting the todo varibale for the actual <ul>li<ul>
-  const [todo, setTodo] = useState([])
+  const [todo, setTodo] = useState(() => {
+    const localValue = localStorage.getItem("ITEM")
+    if(localValue == null) return []
 
+    return JSON.parse(localValue)
+  })
+
+  // using useEffect to store data at the local storage
+  useEffect(() => {
+    localStorage.setItem("ITEM", JSON.stringify(todo))
+  }, [todo]);
+// to do logic start :
   function handleTodo(e) {
     // preventing react from refreshing website
     e.preventDefault()
@@ -41,6 +51,10 @@ function App() {
       return currentTodo.filter(todo => todo.id !== id)
     })
   }
+
+  // todo logic ends 
+
+  // returning JSX :
   return (
     <>
       <h1>My To Do List</h1>
@@ -72,7 +86,6 @@ function App() {
           </li>
           )
         })}
-
       </ul>
     </>
   )
