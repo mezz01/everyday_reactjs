@@ -56,27 +56,26 @@ function App() {
 
   // returning JSX :
   return (
-    <>
-      <h1>My To Do List</h1>
-      <form onSubmit={handleTodo} className='new-todo-form'>
-        <div className='row-todo'>
-          <label htmlFor='item'>Add the thing (we know you won't do)</label>
-          <input 
+    <main>
+      <h1 className='text-9xl font-black tracking-tight pt-32'>My To Do List</h1>
+      <form onSubmit={handleTodo} className='pt-20 flex space-x-2 flex-1 w-full'>
+        <div className='w-full align-middle'>
+          <input
+          className='h-20 w-full text-3xl text font-bold hover:'
           value={newTodo}
           onChange={e => setNewTodo(e.target.value)}
           type='text' 
           id='item'
           />
         </div>
-        <button className='btn-add'>Add to list</button>
       </form>
-      <h1>My todays list</h1>
+      <h1 className='text-4xl font-black tracking-tight pt-8'>My todays list</h1>
       <ul>
         {todo.length === 0 && "No to does yet"}
         {todo.map(todos => {
           return(
           <li>
-            <label>
+            <label className='text-3xl font-semibold'>
               <input type='checkbox' checked={todos.completed} 
                 onChange={e => toggleTodo(todos.id, e.target.checked)}
               />
@@ -87,7 +86,7 @@ function App() {
           )
         })}
       </ul>
-    </>
+    </main>
   )
 }
 
