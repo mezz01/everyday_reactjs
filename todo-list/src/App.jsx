@@ -78,6 +78,7 @@ function App() {
             <label className='text-3xl font-semibold'>
               <input type='checkbox' checked={todos.completed} 
                 onChange={e => toggleTodo(todos.id, e.target.checked)}
+                className='h-9 w-9'
               />
               {todos.title}
             </label>
